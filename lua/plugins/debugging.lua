@@ -32,27 +32,27 @@ return {
 		-- ** Keymaps ** --
 
 		-- Step --
-		vim.keymap.set("n", "<Leader>dc", dap.continue, {})
-		vim.keymap.set("n", "<Leader>dsn", dap.step_over, {})
-		vim.keymap.set("n", "<Leader>dsi", dap.step_into, {})
-		vim.keymap.set("n", "<Leader>dso", dap.step_out, {})
+		vim.keymap.set("n", "<Leader>dc", dap.continue, { desc = "continue"})
+		vim.keymap.set("n", "<Leader>dsn", dap.step_over, { desc = "next (step over)"})
+		vim.keymap.set("n", "<Leader>dsi", dap.step_into, { desc = "step [i]nto"})
+		vim.keymap.set("n", "<Leader>dso", dap.step_out, { desc = "step [o]ut"})
 
 		-- Breakpoints --
-		vim.keymap.set("n", "<Leader>dt", dap.toggle_breakpoint, {})
-		vim.keymap.set("n", "<Leader>dB", dap.set_breakpoint, {})
+		vim.keymap.set("n", "<Leader>dt", dap.toggle_breakpoint, { desc = "[t]oggle breakpoint"})
+		vim.keymap.set("n", "<Leader>dB", dap.set_breakpoint, { desc = "set [B]reakpoint"})
 
 		-- Sections --
-		vim.keymap.set("n", "<Leader>dr", dap.repl.open, {})
-		vim.keymap.set("n", "<Leader>dl", dap.run_last, {})
+		vim.keymap.set("n", "<Leader>dr", dap.repl.open, {desc = "open [r]epl"})
+		vim.keymap.set("n", "<Leader>dl", dap.run_last, {desc = "run [l]ast"})
 
 		-- Widgets --
-		vim.keymap.set({ "n", "v" }, "<Leader>dwh", widgets.hover, {})
-		vim.keymap.set({ "n", "v" }, "<Leader>dwp", widgets.preview, {})
+		vim.keymap.set({ "n", "v" }, "<Leader>dwh", widgets.hover, {desc = "hover widget"})
+		vim.keymap.set({ "n", "v" }, "<Leader>dwp", widgets.preview, {desc = "preview widget"})
 		vim.keymap.set("n", "<Leader>dwf", function()
 			widgets.centered_float(widgets.frames)
-		end, {})
+		end, {desc = "frames widget"})
 		vim.keymap.set("n", "<Leader>dws", function()
 			widgets.centered_float(widgets.scopes)
-		end, {})
+		end, {desc = "scopes widget"})
 	end,
 }
