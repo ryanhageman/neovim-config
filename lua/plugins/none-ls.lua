@@ -13,9 +13,5 @@ return {
 				null_ls.builtins.diagnostics.eslint_d,
 			},
 		})
-
-		vim.keymap.set("n", "<leader>cf", function()
-			vim.lsp.buf.format({ async = true })
-		end, {})
 	end,
 }
