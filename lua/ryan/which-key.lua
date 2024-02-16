@@ -87,18 +87,28 @@ local opts = {
 }
 
 local mappings = {
+  -- Ignore List --
+
+  j = { "which_key_ignore" },
+  k = { "which_key_ignore" },
+  y = { "which_key_ignore" },
+  Y = { "which_key_ignore" },
+
+  -- General Stuff --
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["x"] = { "<cmd>Alpha<cr>", "Dashboard" },
+  [","] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Harpoon List" },
 
   -- Buffers --
   b = {
     name = "Buffers",
+    a = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon Add" },
     b = {
       "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-      "Buffers",
+      "show all buffers",
     },
-    d = { "<cmd>q!<CR>", "Quit" },
+    d = { "<cmd>bdelete<CR>", "delete buffer" },
   },
 
   -- Code (LSP) --
@@ -131,7 +141,13 @@ local mappings = {
   -- Files --
   f = {
     name = "File",
+    r = { ":Telescope oldfiles<CR>", "recent" },
     s = { "<cmd>w<CR>", "save" },
+  },
+
+  g = {
+    name = "Git",
+    s = { ":Neogit<CR>", "git status" },
   },
 
   -- Search --
