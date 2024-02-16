@@ -27,7 +27,7 @@ return {
 			winbar = {
 				lualine_a = {},
 				lualine_b = {
-					{ "filetype", separator = { left = "" }, right_padding = 2 },
+					{ "filetype", icon_only = true, separator = { left = "" }, right_padding = 2 },
 					{
 						"filename",
 						path = 4,
@@ -54,8 +54,8 @@ return {
 
 			sections = {
 				lualine_a = { { "mode", separator = { left = "" }, left_padding = 2 } },
-				lualine_b = { "filetype" },
-				lualine_c = {
+				lualine_b = {
+					{ "filetype", icon_only = true, separator = { right = "" } },
 					{
 						"filename",
 						path = 4,
@@ -65,16 +65,16 @@ return {
 						},
 					},
 				},
+				lualine_c = { "location", "progress" },
 				lualine_x = {
 					{
 						lsp_servers,
 					},
 					"diff",
 					"diagnostics",
-					"branch",
 				},
-				lualine_y = { "progress" },
-				lualine_z = { { "location", separator = { right = "" }, left_padding = 2 } },
+				lualine_y = { { "datetime", style = "%a, %b %d - %I:%M %p" } },
+				lualine_z = { { "branch", separator = { right = "" }, left_padding = 2 } },
 			},
 
 			inactive_sections = {
