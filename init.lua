@@ -1,4 +1,5 @@
 require "ryan.vim-options"
+require "ryan.keymaps"
 require "ryan.plugins"
 require "ryan.colorscheme"
 require "ryan.which-key"
