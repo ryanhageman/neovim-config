@@ -51,3 +51,4 @@ vim.opt.formatoptions:remove({ "c", "r", "o" }) -- don't insert the current comm
 
 -- Language Settings (Basic) --
 vim.g.python3_host_prog = "/usr/bin/python3"
+
