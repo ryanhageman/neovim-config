@@ -7,6 +7,14 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	config = function()
-		vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { desc = "[e]xplorer" })
+		require("neo-tree").setup({
+			filesystem = {
+				filtered_items = {
+					hide_dotfiles = false,
+					hide_gitignored = false,
+				},
+			},
+		})
+		vim.keymap.set("n", "<leader>e", ":Neotree toggle reveal<CR>", { desc = "[e]xplorer" })
 	end,
 }
