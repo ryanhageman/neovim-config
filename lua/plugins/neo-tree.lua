@@ -15,6 +15,6 @@ return {
 				},
 			},
 		})
-		vim.keymap.set("n", "<leader>e", ":Neotree toggle reveal<CR>", { desc = "[e]xplorer" })
+		vim.keymap.set("n", "<leader>e", ":Neotree filesystem toggle reveal_force_cwd<CR>", { desc = "[e]xplorer" })
 	end,
 }

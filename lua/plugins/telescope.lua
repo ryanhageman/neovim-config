@@ -7,13 +7,17 @@ return {
       local telescope = require("telescope")
       local builtin = require("telescope.builtin")
 
+      -- Extensions --
       telescope.load_extension("harpoon")
+      telescope.load_extension("projects")
 
+      -- Keymaps --
       vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "files" })
       vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "find files" })
       vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "grep text" })
       vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "buffer" })
       vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "help" })
+      vim.keymap.set("n", "<leader>sp", telescope.extensions.projects.projects, { desc = "projects" })
     end,
   },
   {
