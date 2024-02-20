@@ -11,6 +11,12 @@ return {
 			local telescope = require("telescope")
 			local builtin = require("telescope.builtin")
 
+      telescope.setup({
+        defaults = {
+          path_display = {"truncate"}
+        }
+      })
+
 			-- Extensions --
 			telescope.load_extension("harpoon")
 			telescope.load_extension("projects")
