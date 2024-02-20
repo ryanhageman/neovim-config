@@ -8,6 +8,14 @@ return {
 			auto_install = true,
 			highlight = { enable = true },
 			indent = { enable = true },
+      folding = {
+        enable = true,
+        filetype_exclude = {},
+        ignore_current_line = true,
+        disable = {},
+        foldmethod = "expr",
+        foldexpr = "nvim_treesitter#foldexpr()",
+      }
 		})
 	end,
 }
