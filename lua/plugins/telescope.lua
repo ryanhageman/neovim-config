@@ -11,11 +11,21 @@ return {
 			local telescope = require("telescope")
 			local builtin = require("telescope.builtin")
 
-      telescope.setup({
-        defaults = {
-          path_display = {"truncate"}
-        }
-      })
+			telescope.setup({
+				defaults = {
+					path_display = { "truncate" },
+					mappings = {
+						i = {
+							["<C-j>"] = "move_selection_next",
+							["<C-k>"] = "move_selection_previous",
+						},
+						n = {
+							["<C-j>"] = "move_selection_next",
+							["<C-k>"] = "move_selection_previous",
+						},
+					},
+				},
+			})
 
 			-- Extensions --
 			telescope.load_extension("harpoon")
