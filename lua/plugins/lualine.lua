@@ -20,23 +20,13 @@ return {
 				lualine_b = {},
 				lualine_c = {},
 				lualine_x = {},
-				lualine_y = { { "buffers", show_modified_status = true } },
-				lualine_z = { { "tabs", separator = { right = "" }, left_padding = 2 } },
+				lualine_y = {},
+				lualine_z = { { "tabs", separator = { left = "", right = "" }, left_padding = 2 } },
 			},
 
 			winbar = {
 				lualine_a = {},
-				lualine_b = {
-					{ "filetype", icon_only = true, separator = { left = "" }, right_padding = 2 },
-					{
-						"filename",
-						path = 4,
-						file_status = true,
-						symbols = {
-							modified = "●",
-						},
-					},
-				},
+				lualine_b = {},
 				lualine_c = { "%{%v:lua.require'nvim-navic'.get_location()%}" },
 				lualine_x = {},
 				lualine_y = {},
