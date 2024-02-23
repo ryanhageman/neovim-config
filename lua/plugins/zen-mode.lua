@@ -8,10 +8,10 @@ return {
       },
     })
 
-    vim.keymap.set("n", "<leader>bzn", ":TZNarrow<CR>", { desc = "zen [n]arrow" })
-    vim.keymap.set("v", "<leader>bzn", ":'<,'>TZNarrow<CR>", { desc = "zen [n]arrow" })
-    vim.keymap.set("n", "<leader>bzf", ":TZFocus<CR>", { desc = "zen [f]ocus" })
-    vim.keymap.set("n", "<leader>bzm", ":TZMinimalist<CR>", { desc = "zen [m]inimalist" })
-    vim.keymap.set("n", "<leader>bza", ":TZAtaraxis<CR>", { desc = "[a]taraxis (zen mode)" })
+    vim.keymap.set("n", "<leader>bzn", "<cmd>TZNarrow<CR>", { desc = "zen [n]arrow" })
+    vim.keymap.set("v", "<leader>bzn", "<cmd>'<,'>TZNarrow<CR>", { desc = "zen [n]arrow" })
+    vim.keymap.set("n", "<leader>bzf", "<cmd>TZFocus<CR>", { desc = "zen [f]ocus" })
+    vim.keymap.set("n", "<leader>bzm", "<cmd>TZMinimalist<CR>", { desc = "zen [m]inimalist" })
+    vim.keymap.set("n", "<leader>bza", "<cmd>TZAtaraxis<CR>", { desc = "[a]taraxis (zen mode)" })
   end,
 }

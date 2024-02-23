@@ -5,5 +5,9 @@ return {
 		"sindrets/diffview.nvim", -- optional - Diff integration
 		"nvim-telescope/telescope.nvim", -- optional
 	},
-	config = true,
+	config = function()
+		require("neogit").setup()
+
+		vim.keymap.set("n", "<leader>gs", "<cmd>Neogit<CR>", { desc = "git status" })
+	end,
 }

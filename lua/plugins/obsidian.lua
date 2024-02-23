@@ -332,4 +332,6 @@ return {
       yaml_parser = "native",
     })
   end,
+
+  vim.keymap.set("n", "<leader>nt", "<cmd>ObsidianToday<CR>", { desc = "today's note" }),
 }

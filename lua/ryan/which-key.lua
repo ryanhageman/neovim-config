@@ -97,17 +97,10 @@ local mappings = {
   -- General Stuff --
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
-  ["x"] = { "<cmd>Alpha<cr>", "Dashboard" },
-  [","] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Harpoon List" },
 
   -- Buffers --
   b = {
     name = "Buffers",
-    a = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon Add" },
-    b = {
-      "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-      "show all buffers",
-    },
     d = { "<cmd>bdelete<CR>", "delete buffer" },
     z = "Zen Mode",
   },
@@ -142,20 +135,15 @@ local mappings = {
   -- Files --
   f = {
     name = "File",
-    r = { ":Telescope oldfiles<CR>", "recent" },
     s = { "<cmd>w<CR>", "save" },
   },
 
-  g = {
-    name = "Git",
-    s = { ":Neogit<CR>", "git status" },
-  },
+  g = { name = "Git" },
 
   n = {
     name = "Obsidian",
     c = { "check the box" },
     n = { "new note from query" },
-    t = { ":ObsidianToday<CR>", "today's note" },
   },
 
   -- Search --
