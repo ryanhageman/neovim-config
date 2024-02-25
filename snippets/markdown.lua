@@ -6,6 +6,7 @@ local f = ls.function_node
 local fmta = require("luasnip.extras.fmt").fmta
 
 return {
+  -- Log Entry --
   s(
     { trig = "log", desc = "h2 with a timestamp" },
     fmta("## <timestamp> - <title>", {
@@ -16,5 +17,6 @@ return {
     })
   ),
 
+  -- Check Box --
   s({ trig = "xchk", desc = "markdown checkbox" }, t("- [ ] ")),
 }
