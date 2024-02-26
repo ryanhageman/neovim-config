@@ -5,6 +5,7 @@ return {
 	lazy = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope.nvim"
 	},
 	config = function()
 		require("obsidian").setup({
@@ -205,22 +206,6 @@ return {
 				},
 			},
 
-			-- Optional, customize the backlinks interface.
-			backlinks = {
-				-- The default height of the backlinks location list.
-				height = 10,
-				-- Whether or not to wrap lines.
-				wrap = true,
-			},
-
-			-- Optional, customize the tags interface.
-			tags = {
-				-- The default height of the tags location list.
-				height = 10,
-				-- Whether or not to wrap lines.
-				wrap = true,
-			},
-
 			-- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
 			-- URL it will be ignored but you can customize this behavior here.
 			-- @param url string
@@ -340,4 +325,6 @@ return {
 	end,
 
 	vim.keymap.set("n", "<leader>nt", "<cmd>ObsidianToday<CR>", { desc = "today's note" }),
+	vim.keymap.set("n", "<leader>nb", "<cmd>ObsidianBacklinks<CR>", { desc = "backlinks" }),
+	vim.keymap.set("n", "<leader>ns", "<cmd>ObsidianSearch<CR>", { desc = "search" }),
 }
