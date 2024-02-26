@@ -1,13 +1,13 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
-	config = function()
-		local configs = require("nvim-treesitter.configs")
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  config = function()
+    local configs = require("nvim-treesitter.configs")
 
-		configs.setup({
-			auto_install = true,
-			highlight = { enable = true },
-			indent = { enable = true },
+    configs.setup({
+      auto_install = true,
+      highlight = { enable = true },
+      indent = { enable = true },
       folding = {
         enable = true,
         filetype_exclude = {},
@@ -15,7 +15,7 @@ return {
         disable = {},
         foldmethod = "expr",
         foldexpr = "nvim_treesitter#foldexpr()",
-      }
-		})
-	end,
+      },
+    })
+  end,
 }
