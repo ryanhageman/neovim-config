@@ -29,7 +29,7 @@ return {
 			},
 
 			-- Optional, if you keep notes in a specific subdirectory of your vault.
-			-- notes_subdir = "notes",
+			notes_subdir = "inbox",
 
 			-- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
 			-- levels defined by "vim.log.levels.*".
@@ -71,7 +71,7 @@ return {
 					end,
 					opts = { buffer = true },
 				},
-				["M-l"] = {
+				["<M-l>"] = {
 					action = function()
 						return require("obsidian").util.toggle_checkbox()
 					end,
@@ -164,7 +164,7 @@ return {
 
 			-- Optional, for templates (see below).
 			templates = {
-				subdir = "templates",
+				subdir = "Ξ templates/templates",
 				date_format = "%Y-%m-%d",
 				time_format = "%H:%M",
 				-- A map for custom variables, the key should be the variable and the value a function
@@ -327,4 +327,5 @@ return {
 	vim.keymap.set("n", "<leader>nt", "<cmd>ObsidianToday<CR>", { desc = "today's note" }),
 	vim.keymap.set("n", "<leader>nb", "<cmd>ObsidianBacklinks<CR>", { desc = "backlinks" }),
 	vim.keymap.set("n", "<leader>ns", "<cmd>ObsidianSearch<CR>", { desc = "search" }),
+	vim.keymap.set("n", "<leader>nT", "<cmd>TodoTrouble<CR>", { desc = "[T]odos" }),
 }
