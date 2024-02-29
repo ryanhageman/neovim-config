@@ -158,7 +158,20 @@ local mappings = {
 
 	-- Sessions --
 	S = { name = "Sessions" },
+
+	-- Window --
+	w = {
+		name = "Window",
+		d = { "<C-w>q", "delete a window" },
+		o = { "<C-w>o", "close other windows" },
+		q = { "<C-w>q", "quit a window" },
+		s = { "<C-w>s", "split a window" },
+		v = { "<C-w>v", "vertical split window" },
+		T = { "<C-w>T", "break out into a new [T]ab" },
+		w = { "<C-w>w", "switch windows" },
+		x = { "<C-w>x", "swap current with next" },
+	},
 }
 
-which_key.setup(setup)
+which_key.setup()
 which_key.register(mappings, opts)

@@ -23,4 +23,15 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "quick fix navigation"
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "quick fix navigation" })
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "quick fix navigation" })
 
-vim.keymap.set("n", "<leader>bs", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc="substitute the word you're on"})
+vim.keymap.set(
+	"n",
+	"<leader>bs",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "substitute the word you're on" }
+)
+
+-- Resize with arrows -- 
+vim.keymap.set("n", "<C-Up>", "<cmd>resize -2<CR>", { desc = "resize up" })
+vim.keymap.set("n", "<C-Down>", "<cmd>resize +2<CR>", { desc = "resize down" })
+vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "resize left" })
+vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "resize right" })
