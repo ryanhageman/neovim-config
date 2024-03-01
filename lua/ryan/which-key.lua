@@ -160,6 +160,10 @@ local mappings = {
 	-- Sessions --
 	S = { name = "Sessions" },
 
+	-- Tests --
+
+	t = { name = "Tests" },
+
 	-- Window --
 	w = {
 		name = "Window",

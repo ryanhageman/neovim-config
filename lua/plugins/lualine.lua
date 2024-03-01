@@ -28,7 +28,7 @@ return {
 				lualine_a = {},
 				lualine_b = {},
 				lualine_c = { "%{%v:lua.require'nvim-navic'.get_location()%}" },
-				lualine_x = {},
+				lualine_x = { { "swenv", icon = " venv:" } },
 				lualine_y = {},
 				lualine_z = {},
 			},
