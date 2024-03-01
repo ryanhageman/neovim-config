@@ -137,6 +137,7 @@ local mappings = {
 	f = {
 		name = "File",
 		s = { "<cmd>w<CR>", "save" },
+		S = { "<cmd>wa<CR>", "save ALL the buffers" },
 	},
 
 	g = { name = "Git" },
