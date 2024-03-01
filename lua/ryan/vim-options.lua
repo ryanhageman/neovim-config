@@ -56,5 +56,5 @@ vim.opt.formatoptions:remove({ "c", "r", "o" }) -- don't insert the current comm
 if vim.fn.has("mac") == 1 then
   vim.g.python3_host_prog = "/usr/local/bin/python3"
 else
-  vim.g.python3_host_prog = "/usr/bin/python3"
+  vim.g.python3_host_prog = "/home/ryan/.asdf/shims/python"
 end
