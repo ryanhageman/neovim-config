@@ -146,13 +146,13 @@ local mappings = {
   n = {
     name = "Obsidian",
     c = { "check the box" },
-    n = { "new note from query" },
   },
 
   -- Projects --
   p = {
     name = "Projects",
     t = "Trouble",
+    v = "Virtual Env (Python)",
   },
 
   -- Search --

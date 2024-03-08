@@ -247,7 +247,7 @@ return {
         -- Not all pickers support all mappings.
         mappings = {
           -- Create a new note from your query.
-          new = "<leader>nn",
+          new = "<leader>nq",
           -- Insert a link to the selected note.
           insert_link = "<leader>nl",
         },
@@ -345,5 +345,6 @@ return {
   vim.keymap.set("n", "<leader>nt", "<cmd>ObsidianToday<CR>", { desc = "today's note" }),
   vim.keymap.set("n", "<leader>nb", "<cmd>ObsidianBacklinks<CR>", { desc = "backlinks" }),
   vim.keymap.set("n", "<leader>ns", "<cmd>ObsidianSearch<CR>", { desc = "search" }),
+  vim.keymap.set("n", "<leader>nn", "<cmd>ObsidianNew<CR>", { desc = "new note" }),
   show_todos()
 }
