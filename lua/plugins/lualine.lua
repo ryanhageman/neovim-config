@@ -29,16 +29,16 @@ return {
 				lualine_b = {},
 				lualine_c = { "%{%v:lua.require'nvim-navic'.get_location()%}" },
 				lualine_x = { { "swenv", icon = " venv:" } },
-				lualine_y = {},
+				lualine_y = { { "filename", separator = { left = "", right = "" } } },
 				lualine_z = {},
 			},
 
 			inactive_winbar = {
 				lualine_a = {},
 				lualine_b = {},
-				lualine_c = { "filename" },
+				lualine_c = {},
 				lualine_x = {},
-				lualine_y = {},
+				lualine_y = { "filename" },
 				lualine_z = {},
 			},
 
