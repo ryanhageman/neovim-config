@@ -101,7 +101,7 @@ local mappings = {
 	-- Buffers --
 	b = {
 		name = "Buffers",
-		d = { "<cmd>bdelete<CR>", "delete buffer" },
+		d = { "<cmd>bp<CR><cmd>bd #<CR>", "delete buffer" },
 		D = { "<cmd>%bd|e#|bd#<CR>", "delete all other buffers" },
 		t = "Trouble",
 		w = { "<cmd>set wrap!<CR>", "toggle [w]rap" },
