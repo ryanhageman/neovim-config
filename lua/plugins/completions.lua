@@ -32,10 +32,10 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets/" })
 
-      local check_backspace = function()
-        local col = vim.fn.col(".") - 1
-        return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
-      end
+      -- local check_backspace = function()
+      --   local col = vim.fn.col(".") - 1
+      --   return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+      -- end
 
       -- Settings --
       cmp.setup({
@@ -57,44 +57,54 @@ return {
         },
 
         mapping = cmp.mapping.preset.insert({
-          ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-          ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+          -- ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+          -- ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
           ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
           ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
           ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
           ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
           ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expandable() then
-              luasnip.expand()
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            elseif check_backspace() then
-              fallback()
-            else
-              fallback()
-            end
-          end, {
-            "i",
-            "s",
-          }),
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, {
-            "i",
-            "s",
-          }),
-          -- },
           ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+
+          ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+          ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+          ["<C-y>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<C-j>"] = cmp.mapping(function()
+            luasnip.jump(-1)
+          end, { "i", "s" }),
+          ["<C-l>"] = cmp.mapping(function()
+            luasnip.jump(1)
+          end, { "i", "s" }),
+          -- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          -- ["<Tab>"] = cmp.mapping(function(fallback)
+          --   if cmp.visible() then
+          --     cmp.select_next_item()
+          --   elseif luasnip.expandable() then
+          --     luasnip.expand()
+          --   elseif luasnip.expand_or_jumpable() then
+          --     luasnip.expand_or_jump()
+          --   elseif check_backspace() then
+          --     fallback()
+          --   else
+          --     fallback()
+          --   end
+          -- end, {
+          --   "i",
+          --   "s",
+          -- }),
+          -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+          --   if cmp.visible() then
+          --     cmp.select_prev_item()
+          --   elseif luasnip.jumpable(-1) then
+          --     luasnip.jump(-1)
+          --   else
+          --     fallback()
+          --   end
+          -- end, {
+          --   "i",
+          --   "s",
+          -- }),
+          -- },
         }),
 
         formatting = {
