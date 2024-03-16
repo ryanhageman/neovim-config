@@ -64,7 +64,7 @@ return {
 			dashboard.button("p", "󰸕   Projects", ":Telescope projects<CR>"),
 			dashboard.button("r", "   Recent", ":Telescope oldfiles<CR>"),
 			dashboard.button("f", "   Find file", ":Telescope find_files<CR>"),
-			dashboard.button("n", "󰂺   Notebook", ":ObsidianToday<CR>"),
+			dashboard.button("n", "󰂺   Notebook", ":ObsidianQuickSwitch<CR>"),
 			dashboard.button("c", "   Config", ":e $MYVIMRC <CR>"),
 			dashboard.button("q", "󰍃   Quit NVIM", ":qa<CR>"),
 		}
