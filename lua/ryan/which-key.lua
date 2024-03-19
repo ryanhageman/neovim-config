@@ -177,6 +177,11 @@ local mappings = {
     q = { "<C-w>q", "quit a window" },
     s = { "<C-w>s", "split a window" },
     v = { "<C-w>v", "vertical split window" },
+    t = {
+      name = "Terminal",
+      v = { [[<cmd>!tmux split-window -h "cd '%:p:h'; ${SHELL:-$SHELL}"<CR>]], "vertical split terminal" },
+      h = { [[<cmd>!tmux split-window -v "cd '%:p:h'; ${SHELL:-$SHELL}"<CR>]], "horizontal split terminal" },
+    },
     T = { "<C-w>T", "break out into a new [T]ab" },
     w = { "<C-w>w", "switch windows" },
     x = { "<C-w>x", "swap current with next" },
