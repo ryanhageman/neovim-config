@@ -116,6 +116,9 @@ return {
         end,
       })
 
+      -- HTML --
+      lspconfig.html.setup({})
+
       -- CSS --
       lspconfig.cssls.setup({
         capabilities = capabilities,
@@ -146,7 +149,7 @@ return {
               "**/Desktop/**",
               "**/Dropbox/**",
               "**/Google Drive/**",
-              "**/iCloud Drive/**"
+              "**/iCloud Drive/**",
             },
           },
         },
