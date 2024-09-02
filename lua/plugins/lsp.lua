@@ -150,6 +150,7 @@ return {
               "**/Dropbox/**",
               "**/Google Drive/**",
               "**/iCloud Drive/**",
+              "**/.Trash/**",
             },
           },
         },
