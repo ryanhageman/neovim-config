@@ -1,192 +1,100 @@
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
-  return
+	return
 end
 
-local setup = {
-  plugins = {
-    marks = true,    -- shows a list of your marks on ' and `
-    registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-    spelling = {
-      enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
-      suggestions = 20, -- how many suggestions should be shown in the list?
-    },
-    -- the presets plugin, adds help for a bunch of default keybindings in Neovim
-    -- No actual key bindings are created
-    presets = {
-      operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-      motions = true,   -- adds help for motions
-      text_objects = true, -- help for text objects triggered after entering an operator
-      windows = true,   -- default bindings on <c-w>
-      nav = true,       -- misc bindings to work with windows
-      z = true,         -- bindings for folds, spelling and others prefixed with z
-      g = true,         -- bindings for prefixed with g
-    },
-  },
-
-  -- add operators that will trigger motion and text object completion
-  -- to enable all native operators, set the preset / operators plugin above
-  -- operators = { gc = "Comments" },
-
-  key_labels = {
-    -- override the label used to display some keys. It doesn't effect WK in any other way.
-    -- For example:
-    -- ["<space>"] = "SPC",
-    -- ["<cr>"] = "RET",
-    -- ["<tab>"] = "TAB",
-  },
-
-  icons = {
-    breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-    separator = "➜", -- symbol used between a key and it's label
-    group = "+", -- symbol prepended to a group
-  },
-
-  popup_mappings = {
-    scroll_down = "<c-d>", -- binding to scroll down inside the popup
-    scroll_up = "<c-u>", -- binding to scroll up inside the popup
-  },
-
-  window = {
-    border = "rounded",     -- none, single, double, shadow
-    position = "bottom",    -- bottom, top
-    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-    padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-    winblend = 0,
-  },
-
-  layout = {
-    height = { min = 4, max = 25 }, -- min and max height of the columns
-    width = { min = 20, max = 50 }, -- min and max width of the columns
-    spacing = 3,                  -- spacing between columns
-    align = "left",               -- align columns left, center or right
-  },
-
-  ignore_missing = false,                                                      -- enable this to hide mappings for which you didn't specify a label
-  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-  show_help = true,                                                            -- show help message on the command line when the popup is visible
-
-  triggers = "auto",                                                           -- automatically setup triggers
-  -- triggers = {"<leader>"} -- or specify a list manually
-  triggers_blacklist = {
-    -- list of mode / prefixes that should never be hooked by WhichKey
-    -- this is mostly relevant for key maps that start with a native binding
-    -- most people should not need to change this
-    i = { "j", "k" },
-    v = { "j", "k" },
-  },
-}
-
-local opts = {
-  mode = "n",    -- NORMAL mode
-  prefix = "<leader>",
-  buffer = nil,  -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-
 local mappings = {
-  -- Ignore List --
+	-- ── Hide From Popup Menu ────────────────────────────────────────────
+	{ "<leader>j", hidden = true, nowait = true, remap = false },
+	{ "<leader>k", hidden = true, nowait = true, remap = false },
+	{ "<leader>Y", hidden = true, nowait = true, remap = false },
+	{ "<leader>y", hidden = true, nowait = true, remap = false },
 
-  j = { "which_key_ignore" },
-  k = { "which_key_ignore" },
-  y = { "which_key_ignore" },
-  Y = { "which_key_ignore" },
+	-- ── General Stuff ───────────────────────────────────────────────────
+	{ "<leader>h", "<cmd>nohlsearch<CR>", desc = "No Highlight", nowait = true, remap = false },
+	{ "<leader>q", "<cmd>q!<CR>", desc = "Quit", nowait = true, remap = false },
 
-  -- General Stuff --
-  ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["q"] = { "<cmd>q!<CR>", "Quit" },
+	-- ── Buffers ─────────────────────────────────────────────────────────
+	{ "<leader>b", group = "Buffers", nowait = true, remap = false },
+	{ "<leader>bd", "<cmd>Bdelete<CR>", desc = "delete buffer", nowait = true, remap = false },
+	{ "<leader>bD", "<cmd>%bd|e#|bd#<CR>", desc = "delete all other buffers", nowait = true, remap = false },
+	{ "<leader>bt", desc = "Trouble", nowait = true, remap = false },
+	{ "<leader>bw", "<cmd>set wrap!<CR>", desc = "toggle [w]rap", nowait = true, remap = false },
+	{ "<leader>bz", desc = "Zen Mode", nowait = true, remap = false },
 
-  -- Buffers --
-  b = {
-    name = "Buffers",
-    -- d = { "<cmd>bp<CR><cmd>bd #<CR>", "delete buffer" },
-    d = { "<cmd>Bdelete<CR>", "delete buffer" },
-    D = { "<cmd>%bd|e#|bd#<CR>", "delete all other buffers" },
-    t = "Trouble",
-    w = { "<cmd>set wrap!<CR>", "toggle [w]rap" },
-    z = "Zen Mode",
-  },
+	-- ── Code ────────────────────────────────────────────────────────────
+	{ "<leader>c", group = "Code (LSP)", nowait = true, remap = false },
+	{ "<leader>c", desc = "code", mode = "v", nowait = true, remap = false },
+	{ "<leader>cc", desc = "comments", mode = { "n", "v" }, nowait = true, remap = false },
+	{ "<leader>ca", desc = "actions", nowait = true, remap = false },
+	{ "<leader>cD", desc = "type [D]efinition", nowait = true, remap = false },
+	{ "<leader>cf", desc = "format", nowait = true, remap = false },
+	{ "<leader>cr", desc = "rename", nowait = true, remap = false },
+	{ "<leader>cw", group = "Workspace", nowait = true, remap = false },
+	{ "<leader>cwa", desc = "add folder", nowait = true, remap = false },
+	{ "<leader>cwl", desc = "list folders", nowait = true, remap = false },
+	{ "<leader>cwr", desc = "remove folder", nowait = true, remap = false },
 
-  -- Code (LSP) --
-  c = {
-    name = "Code (LSP)",
-    { "code", mode = "v" },
-    a = "actions",
-    c = { "comments", mode = { "n", "v" } },
-    D = "type [D]efinition",
-    f = "format",
-    r = "rename",
+	-- ── Debug ───────────────────────────────────────────────────────────
+	{ "<leader>d", group = "Debug", nowait = true, remap = false },
+	{ "<leader>ds", group = "Step", nowait = true, remap = false },
+	{ "<leader>dw", group = "Widgets", nowait = true, remap = false },
 
-    w = {
-      name = "Workspace",
-      a = "add folder",
-      r = "remove folder",
-      l = "list folders",
-    },
-  },
+	-- ────────────────────────────── File Tree ──────────────────────────────
+	{ "<leader>e", desc = "File Tree", nowait = true, remap = false },
 
-  -- Debug --
-  d = {
-    name = "Debug",
+	-- ── Files ───────────────────────────────────────────────────────────
+	{ "<leader>f", group = "File", nowait = true, remap = false },
+	{ "<leader>fs", "<cmd>w<CR>", desc = "save", nowait = true, remap = false },
+	{ "<leader>fS", "<cmd>wa<CR>", desc = "save ALL the buffers", nowait = true, remap = false },
 
-    s = { name = "Step" },
-    w = { name = "Widgets" },
-  },
+	-- ── Git ─────────────────────────────────────────────────────────────
+	{ "<leader>g", group = "Git", nowait = true, remap = false },
 
-  -- File Tree --
-  e = "File Tree",
+	-- ── Notebook ────────────────────────────────────────────────────────
+	{ "<leader>n", group = "Obsidian", nowait = true, remap = false },
+	{ "<leader>nc", desc = "check the box", nowait = true, remap = false },
 
-  -- Files --
-  f = {
-    name = "File",
-    s = { "<cmd>w<CR>", "save" },
-    S = { "<cmd>wa<CR>", "save ALL the buffers" },
-  },
+	-- ── Projects ────────────────────────────────────────────────────────
+	{ "<leader>p", group = "Projects", nowait = true, remap = false },
+	{ "<leader>pt", desc = "Trouble", nowait = true, remap = false },
+	{ "<leader>pv", desc = "Virtual Env (Python)", nowait = true, remap = false },
 
-  g = { name = "Git" },
+	-- ── Search ──────────────────────────────────────────────────────────
+	{ "<leader>s", group = "Search", nowait = true, remap = false },
 
-  n = {
-    name = "Obsidian",
-    c = { "check the box" },
-  },
+	-- ── Sessions ────────────────────────────────────────────────────────
+	{ "<leader>S", group = "Sessions", nowait = true, remap = false },
 
-  -- Projects --
-  p = {
-    name = "Projects",
-    t = "Trouble",
-    v = "Virtual Env (Python)",
-  },
+	-- ── Tests ───────────────────────────────────────────────────────────
+	{ "<leader>t", group = "Tests", nowait = true, remap = false },
 
-  -- Search --
-  s = { name = "Search" },
-
-  -- Sessions --
-  S = { name = "Sessions" },
-
-  -- Tests --
-
-  t = { name = "Tests" },
-
-  -- Window --
-  w = {
-    name = "Window",
-    d = { "<C-w>q", "delete a window" },
-    o = { "<C-w>o", "close other windows" },
-    q = { "<C-w>q", "quit a window" },
-    s = { "<C-w>s", "split a window" },
-    v = { "<C-w>v", "vertical split window" },
-    t = {
-      name = "Terminal",
-      v = { [[<cmd>!tmux split-window -h "cd '%:p:h'; ${SHELL:-$SHELL}"<CR>]], "vertical split terminal" },
-      h = { [[<cmd>!tmux split-window -v "cd '%:p:h'; ${SHELL:-$SHELL}"<CR>]], "horizontal split terminal" },
-    },
-    T = { "<C-w>T", "break out into a new [T]ab" },
-    w = { "<C-w>w", "switch windows" },
-    x = { "<C-w>x", "swap current with next" },
-  },
+	-- ── Window ──────────────────────────────────────────────────────────
+	{ "<leader>w", group = "Window", nowait = true, remap = false },
+	{ "<leader>wd", "<C-w>q", desc = "delete a window", nowait = true, remap = false },
+	{ "<leader>wo", "<C-w>o", desc = "close other windows", nowait = true, remap = false },
+	{ "<leader>wq", "<C-w>q", desc = "quit a window", nowait = true, remap = false },
+	{ "<leader>ws", "<C-w>s", desc = "split a window", nowait = true, remap = false },
+	{ "<leader>wt", group = "Terminal", nowait = true, remap = false },
+	{
+		"<leader>wth",
+		"<cmd>!kitty @ set-window-layout splits; kitty @ launch --type=window --cwd '%:p:h' --location=hsplit<CR>",
+		desc = "horizontal split terminal",
+		nowait = true,
+		remap = false,
+	},
+	{
+		"<leader>wtv",
+		"<cmd>!kitty @ set-window-layout splits; kitty @ launch --type=window --cwd '%:p:h' --location=vsplit<CR>",
+		desc = "vertical split terminal",
+		nowait = true,
+		remap = false,
+	},
+	{ "<leader>wT", "<C-w>T", desc = "break out into a new --[[ [T] ]]ab", nowait = true, remap = false },
+	{ "<leader>wv", "<C-w>v", desc = "vertical split window", nowait = true, remap = false },
+	{ "<leader>ww", "<C-w>w", desc = "switch windows", nowait = true, remap = false },
+	{ "<leader>wx", "<C-w>x", desc = "swap current with next", nowait = true, remap = false },
 }
 
 which_key.setup()
-which_key.register(mappings, opts)
+which_key.add(mappings)
