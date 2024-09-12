@@ -78,14 +78,14 @@ local mappings = {
 	{ "<leader>wt", group = "Terminal", nowait = true, remap = false },
 	{
 		"<leader>wth",
-		"<cmd>!kitty @ set-window-layout splits; kitty @ launch --type=window --cwd '%:p:h' --location=hsplit<CR>",
+		"<cmd>!kitty @ launch --type=window --cwd $(git rev-parse --show-toplevel || pwd) --location=hsplit<CR>",
 		desc = "horizontal split terminal",
 		nowait = true,
 		remap = false,
 	},
 	{
 		"<leader>wtv",
-		"<cmd>!kitty @ set-window-layout splits; kitty @ launch --type=window --cwd '%:p:h' --location=vsplit<CR>",
+		"<cmd>!kitty @ launch --type=window --cwd $(git rev-parse --show-toplevel || pwd) --location=vsplit<CR>",
 		desc = "vertical split terminal",
 		nowait = true,
 		remap = false,
