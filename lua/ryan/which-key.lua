@@ -40,7 +40,7 @@ local mappings = {
 	{ "<leader>ds", group = "Step", nowait = true, remap = false },
 	{ "<leader>dw", group = "Widgets", nowait = true, remap = false },
 
-	-- ────────────────────────────── File Tree ──────────────────────────────
+	-- ── File Tree ───────────────────────────────────────────────────────
 	{ "<leader>e", desc = "File Tree", nowait = true, remap = false },
 
 	-- ── Files ───────────────────────────────────────────────────────────
@@ -90,10 +90,16 @@ local mappings = {
 		nowait = true,
 		remap = false,
 	},
-	{ "<leader>wT", "<C-w>T", desc = "break out into a new --[[ [T] ]]ab", nowait = true, remap = false },
 	{ "<leader>wv", "<C-w>v", desc = "vertical split window", nowait = true, remap = false },
 	{ "<leader>ww", "<C-w>w", desc = "switch windows", nowait = true, remap = false },
 	{ "<leader>wx", "<C-w>x", desc = "swap current with next", nowait = true, remap = false },
+
+-- ── Tabs ────────────────────────────────────────────────────────────
+	{ "<leader>wT", group = "Tabs", nowait = true, remap = false },
+	{ "<leader>wTt", "<C-w>T", desc = "break out into a new Tab", nowait = true, remap = false },
+	{ "<leader>wTn", "<cmd>tabnew<CR>", desc = "new Tab", nowait = true, remap = false },
+	{ "<leader>wTh", "<cmd>tabp<CR>", desc = "Tab on the left", nowait = true, remap = false },
+	{ "<leader>wTl", "<cmd>tabn<CR>", desc = "Tab on the right", nowait = true, remap = false },
 }
 
 which_key.setup()
