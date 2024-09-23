@@ -24,12 +24,13 @@ local mappings = {
 
 	-- ── Code ────────────────────────────────────────────────────────────
 	{ "<leader>c", group = "Code (LSP)", nowait = true, remap = false },
-	{ "<leader>c", desc = "code", mode = "v", nowait = true, remap = false },
+	{ "<leader>c", desc = "Code", mode = "v", nowait = true, remap = false },
 	{ "<leader>cc", desc = "comments", mode = { "n", "v" }, nowait = true, remap = false },
 	{ "<leader>ca", desc = "actions", nowait = true, remap = false },
 	{ "<leader>cD", desc = "type [D]efinition", nowait = true, remap = false },
 	{ "<leader>cf", desc = "format", nowait = true, remap = false },
 	{ "<leader>cr", desc = "rename", nowait = true, remap = false },
+	{ "<leader>cs", group = "Snapshot", mode = "v", nowait = true, remap = false },
 	{ "<leader>cw", group = "Workspace", nowait = true, remap = false },
 	{ "<leader>cwa", desc = "add folder", nowait = true, remap = false },
 	{ "<leader>cwl", desc = "list folders", nowait = true, remap = false },
@@ -94,7 +95,7 @@ local mappings = {
 	{ "<leader>ww", "<C-w>w", desc = "switch windows", nowait = true, remap = false },
 	{ "<leader>wx", "<C-w>x", desc = "swap current with next", nowait = true, remap = false },
 
--- ── Tabs ────────────────────────────────────────────────────────────
+	-- ── Tabs ────────────────────────────────────────────────────────────
 	{ "<leader>wT", group = "Tabs", nowait = true, remap = false },
 	{ "<leader>wTt", "<C-w>T", desc = "break out into a new Tab", nowait = true, remap = false },
 	{ "<leader>wTn", "<cmd>tabnew<CR>", desc = "new Tab", nowait = true, remap = false },
