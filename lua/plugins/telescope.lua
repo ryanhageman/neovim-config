@@ -4,6 +4,10 @@ return {
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	},
 	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	},
+	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.5",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -30,6 +34,7 @@ return {
 			-- Extensions --
 			telescope.load_extension("harpoon")
 			telescope.load_extension("projects")
+      telescope.load_extension("file_browser")
 
 			-- Keymaps --
 			vim.keymap.set(
