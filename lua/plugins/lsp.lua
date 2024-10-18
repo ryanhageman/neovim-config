@@ -1,6 +1,7 @@
 return {
-	-- ** Mason ** --
-
+	-- ╭─────────────────────────────────────────────────────────╮
+	-- │                          Mason                          │
+	-- ╰─────────────────────────────────────────────────────────╯
 	{
 		"williamboman/mason.nvim",
 		config = function()
@@ -8,8 +9,9 @@ return {
 		end,
 	},
 
-	-- ** Mason LSP Config ** --
-
+	-- ╭─────────────────────────────────────────────────────────╮
+	-- │                    Mason LSP Config                     │
+	-- ╰─────────────────────────────────────────────────────────╯
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
@@ -19,142 +21,52 @@ return {
 		end,
 	},
 
-	-- Navic (top breadcrumbs) --
-
+	-- ╭─────────────────────────────────────────────────────────╮
+	-- │                 Navic (top breadcrumbs)                 │
+	-- ╰─────────────────────────────────────────────────────────╯
 	{
 		"SmiteshP/nvim-navic",
 		dependencies = {
 			"neovim/nvim-lspconfig",
 		},
 		config = function()
-			require("nvim-navic").setup({
-				icons = {
-					File = "󰈙 ",
-					Module = " ",
-					Namespace = "󰌗 ",
-					Package = " ",
-					Class = "󰌗 ",
-					Method = "󰆧 ",
-					Property = " ",
-					Field = " ",
-					Constructor = " ",
-					Enum = "󰕘",
-					Interface = "󰕘",
-					Function = "󰊕 ",
-					Variable = "󰆧 ",
-					Constant = "󰏿 ",
-					String = "󰀬 ",
-					Number = "󰎠 ",
-					Boolean = "◩ ",
-					Array = "󰅪 ",
-					Object = "󰅩 ",
-					Key = "󰌋 ",
-					Null = "󰟢 ",
-					EnumMember = " ",
-					Struct = "󰌗 ",
-					Event = " ",
-					Operator = "󰆕 ",
-					TypeParameter = "󰊄 ",
-				},
-				lsp = {
-					auto_attach = true,
-					preference = nil,
-				},
-				highlight = false,
-				separator = " > ",
-				depth_limit = 0,
-				depth_limit_indicator = "..",
-				safe_output = true,
-				lazy_update_context = false,
-				click = false,
-				format_text = function(text)
-					return text
-				end,
-			})
+			local navic_settings = require("plugins.lsp.navic").settings()
+
+			require("nvim-navic").setup(navic_settings)
 		end,
 	},
 
-	-- ** Nvim LSP Config ** --
-
+	-- ╭─────────────────────────────────────────────────────────╮
+	-- │                     Nvim LSP Config                     │
+	-- ╰─────────────────────────────────────────────────────────╯
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 			local lspconfig = require("lspconfig")
-			local navic = require("nvim-navic")
 
-			-- Lua --
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					navic.attach(client, bufnr)
-				end,
-			})
+			-- ── Lua ─────────────────────────────────────────────────────────────
+			local lua_lsp = require("plugins.lsp.lua")
+			lua_lsp.setup()
 
-			-- Ruby --
-			lspconfig.solargraph.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					navic.attach(client, bufnr)
-				end,
-			})
+			-- ── Ruby ────────────────────────────────────────────────────────────
+			local ruby_lsp = require("plugins.lsp.ruby")
+			ruby_lsp.setup()
 
-			-- JavaScript / TypeScript --
-			lspconfig.ts_ls.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					navic.attach(client, bufnr)
-				end,
-			})
+			-- ── JavaScript / TypeScript ─────────────────────────────────────────
+			local javascript_lsp = require("plugins.lsp.javascript")
+			javascript_lsp.setup()
 
-			-- Python --
-			lspconfig.pyright.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					navic.attach(client, bufnr)
-				end,
-			})
+			-- ── Python ──────────────────────────────────────────────────────────
+			local python_lsp = require("plugins.lsp.python")
+			python_lsp.setup()
 
-			-- HTML --
+			-- ── HTML ────────────────────────────────────────────────────────────
 			lspconfig.html.setup({})
 
-			-- CSS --
-			lspconfig.cssls.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					navic.attach(client, bufnr)
-				end,
-			})
-
-			lspconfig.css_variables.setup({
-				settings = {
-					cssVariables = {
-						blacklistFolders = {
-							"**/.cache",
-							"**/.DS_Store",
-							"**/.git",
-							"**/.hg",
-							"**/.next",
-							"**/.svn",
-							"**/bower_components",
-							"**/CVS",
-							"**/dist",
-							"**/node_modules",
-							"**/tests",
-							"**/tmp",
-							"**/Library/**",
-							"**/Documents/**",
-							"**/Downloads/**",
-							"**/Desktop/**",
-							"**/Dropbox/**",
-							"**/Google Drive/**",
-							"**/iCloud Drive/**",
-							"**/.Trash/**",
-						},
-					},
-				},
-			})
+			-- ── CSS ─────────────────────────────────────────────────────────────
+			local css_lsp = require("plugins.lsp.css")
+			css_lsp.cssls_setup()
+			css_lsp.css_variables_setup()
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
