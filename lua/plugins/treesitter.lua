@@ -7,7 +7,10 @@ return {
     configs.setup({
       auto_install = true,
       highlight = { enable = true },
-      indent = { enable = true },
+      indent = {
+        enable = true,
+        disable = { "ruby" },
+      },
       folding = {
         enable = true,
         filetype_exclude = {},
