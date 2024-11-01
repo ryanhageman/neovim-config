@@ -62,6 +62,7 @@ return {
 
 			-- ── HTML ────────────────────────────────────────────────────────────
 			lspconfig.html.setup({})
+      lspconfig.emmet_language_server.setup({})
 
 			-- ── CSS ─────────────────────────────────────────────────────────────
 			local css_lsp = require("plugins.lsp.css")
