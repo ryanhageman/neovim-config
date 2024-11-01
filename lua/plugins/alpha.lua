@@ -87,15 +87,20 @@ return {
       -- wrap = "overflow";
     }
 
+		local possession = require("nvim-possession")
+
     -- Set menu
     dashboard.section.buttons.val = {
       -- dashboard.button("SPC j", "󰈚   Restore Session", ":SessionRestore<cr>"),
-      dashboard.button("p", "󰸕   Projects", ":Telescope projects<CR>"),
-      dashboard.button("r", "   Recent", ":Telescope oldfiles<CR>"),
-      dashboard.button("f", "   Find file", ":Telescope find_files<CR>"),
-      dashboard.button("n", "󰂺   Notebook", ":ObsidianQuickSwitch<CR>"),
-      dashboard.button("c", "   Config", ":e $MYVIMRC <CR>"),
-      dashboard.button("q", "󰍃   Quit NVIM", ":qa<CR>"),
+      dashboard.button("p", "🏄   Projects", ":Telescope projects<CR>"),
+      dashboard.button("s", "☕   Sessions", function ()
+        possession.list()
+      end),
+      dashboard.button("r", "⌛   Recent", ":Telescope oldfiles<CR>"),
+      dashboard.button("f", "🔍   Find file", ":Telescope find_files<CR>"),
+      dashboard.button("n", "📘   Notebook", ":ObsidianQuickSwitch<CR>"),
+      dashboard.button("c", "🛠️   Config", ":e $MYVIMRC <CR>"),
+      dashboard.button("q", "🍷   Quit NVIM", ":qa<CR>"),
     }
 
     dashboard.opts.opts.noautocmd = true
