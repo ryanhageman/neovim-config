@@ -18,8 +18,6 @@ vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Ctrl+c escapes in insert mode" }
 
 vim.keymap.set("n", "Q", "<nop>", { desc = "saves you from Q, it's a scary place" })
 
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "quick fix navigation" })
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "quick fix navigation" })
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "quick fix navigation" })
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "quick fix navigation" })
 

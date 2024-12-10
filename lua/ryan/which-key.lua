@@ -73,20 +73,21 @@ local mappings = {
 	-- ── Window ──────────────────────────────────────────────────────────
 	{ "<leader>w", group = "Window", nowait = true, remap = false },
 	{ "<leader>wd", "<C-w>q", desc = "delete a window", nowait = true, remap = false },
+	{ "<leader>wn", group = "Notices", nowait = true, remap = false },
 	{ "<leader>wo", "<C-w>o", desc = "close other windows", nowait = true, remap = false },
 	{ "<leader>wq", "<C-w>q", desc = "quit a window", nowait = true, remap = false },
 	{ "<leader>ws", "<C-w>s", desc = "split a window", nowait = true, remap = false },
 	{ "<leader>wt", group = "Terminal", nowait = true, remap = false },
 	{
 		"<leader>wth",
-		"<cmd>!kitty @ launch --type=window --cwd $(git rev-parse --show-toplevel || pwd) --location=hsplit<CR>",
+		"<cmd>silent! !kitty @ launch --type=window --cwd $(git rev-parse --show-toplevel || pwd) --location=hsplit<CR>",
 		desc = "horizontal split terminal",
 		nowait = true,
 		remap = false,
 	},
 	{
 		"<leader>wtv",
-		"<cmd>!kitty @ launch --type=window --cwd $(git rev-parse --show-toplevel || pwd) --location=vsplit<CR>",
+		"<cmd>silent! !kitty @ launch --type=window --cwd $(git rev-parse --show-toplevel || pwd) --location=vsplit<CR>",
 		desc = "vertical split terminal",
 		nowait = true,
 		remap = false,
