@@ -10,6 +10,18 @@ function M.setup()
     on_attach = function(client, bufnr)
       navic.attach(client, bufnr)
     end,
+    settings = {
+      javascript = {
+        validate = {
+          enable = true,
+        },
+      },
+      typescript = {
+        validate = {
+          enable = true,
+        },
+      },
+    },
   })
 end
 
