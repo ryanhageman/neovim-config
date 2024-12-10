@@ -35,6 +35,8 @@ return {
       require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/snippets/" })
 
       luasnip.filetype_extend("eruby", { "html" })
+      luasnip.filetype_extend("typescript", { "javascript" })
+      luasnip.filetype_extend("typescriptreact", { "javascript" })
 
       -- local check_backspace = function()
       --   local col = vim.fn.col(".") - 1
