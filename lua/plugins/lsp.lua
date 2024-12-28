@@ -56,6 +56,10 @@ return {
       local javascript_lsp = require("plugins.lsp.javascript")
       javascript_lsp.setup()
 
+      -- ── Svelte ──────────────────────────────────────────────────────────
+      local svelte_lsp = require("plugins.lsp.svelte")
+      svelte_lsp.setup()
+
       -- ── Python ──────────────────────────────────────────────────────────
       local python_lsp = require("plugins.lsp.python")
       python_lsp.setup()
