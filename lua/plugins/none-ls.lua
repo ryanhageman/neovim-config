@@ -3,7 +3,7 @@ local autoformat_filetypes = {
 	javascriptreact = true,
 	typescript = true,
 	typescriptreact = true,
-	lua = true,
+	lua = false,
 }
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
