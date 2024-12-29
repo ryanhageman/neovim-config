@@ -8,6 +8,6 @@ return {
 	config = function()
 		require("neogit").setup()
 
-		vim.keymap.set("n", "<leader>gs", "<cmd>Neogit<CR>", { desc = "git status" })
+		vim.keymap.set("n", "<leader>gn", "<cmd>Neogit<CR>", { desc = "Neogit" })
 	end,
 }

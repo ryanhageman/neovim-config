@@ -36,7 +36,5 @@ return {
 				},
 			},
 		})
-
-		vim.keymap.set("n", "<leader>wnd", "<cmd>NoiceDismiss<CR>", { desc = "dismiss notice" })
 	end,
 }
