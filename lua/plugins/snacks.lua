@@ -33,5 +33,6 @@ return {
 	keys = {
 		{ "<leader>bzd", function() Snacks.dim() end, desc = "Dim", },
 		{ "<leader>bzu", function() Snacks.dim.disable() end, desc = "unDim", },
+    { "<leader>gb", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
 	},
 }
