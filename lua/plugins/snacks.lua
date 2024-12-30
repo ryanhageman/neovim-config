@@ -25,8 +25,10 @@ return {
 		input = { enabled = true },
 		notifier = { enabled = true },
 		quickfile = { enabled = true },
+    scope = {enabled = true },
 		scroll = { enabled = true },
 		statuscolumn = { enabled = true },
+    terminal = { enabled = true },
 		words = { enabled = true },
 	},
 
@@ -40,5 +42,7 @@ return {
     { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
     { "<leader>uh",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
+    { "<leader>,",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
+    { "<leader>bS",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
 	},
 }
